@@ -63,6 +63,7 @@ function Home() {
             <>
                 <h3 className="text-center"><b>Search Text:</b> {results.term}</h3>
                 <h3  className="text-center"><b>Runtime:</b> {results.query_runtime? results.query_runtime : "N/A"}</h3>
+                <img width='5rem' height='auto' alt={results.seo_vis ? 'SEO Visualization' : 'No image returned'} src={results.seo_vis? results.seo_vis : null} />
                 {
                     results.queries? 
                         results.queries.map((query, index)=>{
