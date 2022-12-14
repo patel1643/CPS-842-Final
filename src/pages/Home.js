@@ -96,7 +96,10 @@ function Home() {
         <Container className="flex flex-col gap-4 p-4">
             
             <h1 className="text-4xl text-center font-semibold">
-                Assignment 2<br/> - <br/>Matthew Meszaros (500900098) and Udbhav Prasad (500909034)
+                Final<br/> - <br/>
+                Matthew Meszaros (500900098), Udbhav Prasad (500909034),
+                Parth Patel (500890698), Parth Patel (500893723)
+
             </h1>
             
             <div className="flex flex-col gap-2 text-center">
