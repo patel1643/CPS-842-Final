@@ -11,6 +11,7 @@ function Home() {
     const [bm25, setBm25] = useState(false);
     const [rec, setRec] = useState(false);
     const [searchText, setSearchText] = useState(null);
+    const [imageUrl, setImageUrl] = useState('');
 
     const onHandleChangeRec = () => {
         setRec(!rec);
@@ -42,10 +43,18 @@ function Home() {
             }
 
             const response = await api.get(fetchRoute);
-            setResults(response.data)
+            setResults(response.data);
+            let blobResponse = response.data.seo_vis.blob();
+            let objURL = window.URL.createObjectURL(blobResponse);
+            setImageUrl(objURL);
+        setLoading(false)
+
         } catch (err) {
+        setLoading(false)
+
         }
         setLoading(false)
+
     }
 
 
@@ -63,7 +72,7 @@ function Home() {
             <>
                 <h3 className="text-center"><b>Search Text:</b> {results.term}</h3>
                 <h3  className="text-center"><b>Runtime:</b> {results.query_runtime? results.query_runtime : "N/A"}</h3>
-                <img width='5rem' height='auto' alt={results.seo_vis ? 'SEO Visualization' : 'No image returned'} src={results.seo_vis? results.seo_vis : null} />
+                <img width='5rem' height='auto' alt={imageUrl?.length > 0 ? 'SEO Visualization' : 'No image returned'} src={imageUrl} />
                 {
                     results.queries? 
                         results.queries.map((query, index)=>{
